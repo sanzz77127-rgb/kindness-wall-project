@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <title>Kindness Wall</title>
     <style>
-        .note { background: #fff7ae; padding: 15px; margin: 10px; border-left: 5px solid #ffeb3b; width: 200px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
-        #wall { display: flex; flex-wrap: wrap; }
+      h1, .note {
+    font-family: 'Indie Flower', cursive;
+}
+     body {
+    background-image: url('background.jpg'); /* Keep your background here */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Segoe UI', sans-serif;
+    
+    /* This centers all the content (heading, input, and button) */
+    text-align: center; 
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: white;           /* Makes the text white */
+    font-size: 3rem;        /* Makes the text bigger (adjust as needed) */
+    margin-top: 50px;       /* Adds some space from the top of the page */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Adds a shadow so it's readable on light backgrounds */
+}
+
+input, button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+}
+
+#wall {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; /* Centers the sticky notes in the middle */
+    gap: 20px; 
+    margin-top: 40px;
+}
+
+.note {
+    background: #fff7ae;
+    padding: 20px;
+    width: 200px;
+    min-height: 150px; /* Gives them a square shape */
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+    
+    /* This makes every second note tilt the opposite way */
+    transform: rotate(-2deg); 
+    transition: transform 0.3s ease; /* Smooth movement for later */
+}
+
+.note:nth-child(even) {
+    transform: rotate(2deg);
+}
+.note:hover {
+    transform: scale(1.1) rotate(0deg); /* Grows bigger and straightens */
+    z-index: 10; /* Brings it to the front */
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.note {
+    animation: fadeIn 0.5s ease-out forwards;
+}
     </style>
 </head>
 <body>
