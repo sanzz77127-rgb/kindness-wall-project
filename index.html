@@ -94,12 +94,19 @@ input, button {
         async function loadNotes() {
             const res = await fetch('http://localhost:3001/notes');
             const data = await res.json();
-            data.forEach(n => {
-                const d = document.createElement('div');
-                d.className = 'note';
-                d.innerText = n.content;
-                document.getElementById('wall').appendChild(d);
-            });
+           data.forEach(n => {
+    const d = document.createElement('div');
+    d.className = 'note';
+    d.innerText = n.content;
+
+    // List of pastel colors
+    const colors = ['#fff7ae', '#ffc1cc', '#b3e5fc', '#c8e6c9', '#e1bee7'];
+    // Pick one randomly
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    d.style.backgroundColor = randomColor;
+
+    document.getElementById('wall').appendChild(d);
+});
         }
         loadNotes();
     </script>
